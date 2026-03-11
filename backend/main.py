@@ -5,12 +5,21 @@ from database import engine, Base, get_db
 from models import Card
 from pydantic import BaseModel
 
+app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"], # Vai permitir qualquer origem (CORS)
+    allow_credentials=True, 
+    allow_methods=["*"], # Permite todos os métodos (GET, POST, etc)
+    allow_headers=["*"]) # Permite todos os cabeçalhos
+
 # Cria as tabelas assim que o app inicia
 Base.metadata.create_all(bind=engine)
 
-app = FastAPI()
-
-app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
+@app.get("/")
+def home():
+    return {"message": "API de SRS a funcionar perfeitamente!"}
 
 # Schemas Pydantic (Validação simple
 class CardCreate(BaseModel):
