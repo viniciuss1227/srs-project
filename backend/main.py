@@ -30,12 +30,18 @@ class CardReview(BaseModel):
     acertou: bool
 
 # ROTAS
-@app.post("/cards")
+@app.post("/cards/")
 def criar_card(obj: CardCreate, db: Session = Depends(get_db)):
     novo = Card(frente=obj.frente, verso=obj.verso)
     db.add(novo)
     db.commit()
     return {"status": "criado"}
+
+@app.get("/cards/") # Rota GET para listar todos os cards
+def listar_cards(db: Session = Depends(get_db)):
+    return db.query(Card).all()
+
+
 
 @app.get("/cards/revisar")
 def listar_para_revisar(db: Session = Depends(get_db)):
