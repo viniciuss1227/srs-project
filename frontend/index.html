@@ -4,18 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>SRS - Aprendizagem de Idiomas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>SRS - Flashcards</title>
 </head>
 <body>
-    <div class="container">
-        <h1>Criar Novo Cartão</h1>
-        <div class="card-form">
-            <input type="text" id="frente" placeholder="Frente">
-            <input type="text" id="verso" placeholder="Verso">
-            <button id="btn-salvar">Salvar no Sistema</button>
-            <p id="mensagem"></p>
-        </div>
-    </div>
-    <script src="script.js"></script> </body>
+
+    <header class="topbar">
+        <span class="logo">🧠 SRS</span>
+    </header>
+
+    <main class="container">
+
+        <!-- Formulário de criação -->
+        <section class="create-section">
+            <h2 class="section-title">Add to deck</h2>
+            <div class="card-form">
+                <input type="text" id="frente" placeholder="Frente (ex: The Apple)" maxlength="200">
+                <input type="text" id="verso" placeholder="Verso (ex: A maçã)" maxlength="200">
+                <button id="btn-salvar">Salvar no Sistema</button>
+                <p id="mensagem" class="msg"></p>
+            </div>
+        </section>
+
+        <!-- Grid de cards -->
+        <section class="cards-section">
+            <h2 class="section-title">Saved Cards</h2>
+            <div id="cards-grid" class="cards-grid">
+                <!-- cards inseridos via JS -->
+            </div>
+            <p id="empty-msg" class="empty-msg">Nenhum cartão ainda. Crie o seu primeiro! 🃏</p>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
 </body>
 </html>
