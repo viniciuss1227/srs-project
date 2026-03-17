@@ -27,7 +27,7 @@ class CardCreate(BaseModel):
     verso: str
 
 class CardReview(BaseModel):
-    acertou: bool
+    dificuldade: int # 0=Again, 1=Hard, 2=Good, 3=Easy
 
 # ROTAS
 @app.post("/cards/")
@@ -55,6 +55,6 @@ def revisar_card(card_id: int, review: CardReview, db: Session = Depends(get_db)
     if not card:
         raise HTTPException(status_code=404, detail="Não encontrado")
     
-    card.revisar(review.acertou) # Chama a lógica que está no models.py
+    card.revisar(review.dificuldade) # Chama a lógica que está no models.py
     db.commit()
     return {"status": "atualizado"}
