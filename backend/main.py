@@ -1,9 +1,11 @@
+from datetime import datetime, timedelta
 from fastapi import FastAPI, Depends, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
-from database import engine, Base, get_db
-from models import Card
 from pydantic import BaseModel
+from . import models, database
+from .database import engine, Base, get_db
+from .models import Card
 
 app = FastAPI()
 
@@ -50,11 +52,12 @@ def listar_para_revisar(db: Session = Depends(get_db)):
     return db.query(Card).filter(Card.proxima_revisao <= datetime.now()).all()
 
 @app.post("/cards/{card_id}/revisar")
-def revisar_card(card_id: int, review: CardReview, db: Session = Depends(get_db)):
-    card = db.query(Card).filter(Card.id == card_id).first()
+def revisar_card(card_id: int, revisao: CardReview, db: Session = Depends(get_db)):
+    card = db.query(models.Card).filter(models.Card.id == card_id).first()
     if not card:
-        raise HTTPException(status_code=404, detail="Não encontrado")
+        raise HTTPException(status_code=404, detail={"erro": "Card não encontrado"})
     
-    card.revisar(review.dificuldade) # Chama a lógica que está no models.py
-    db.commit()
-    return {"status": "atualizado"}
+    card.calcular_proxima_revisao(dificuldade=revisao.dificuldade)
+
+    db.commit()    
+    return {"msg": "Revisado!", "proxima": card.proxima_revisao}
