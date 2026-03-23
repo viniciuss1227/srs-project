@@ -20,7 +20,6 @@ body {
     min-height: 100vh;
 }
 
-/* ---- TOPBAR ---- */
 .topbar {
     background: var(--purple);
     padding: 16px 32px;
@@ -28,14 +27,8 @@ body {
     align-items: center;
 }
 
-.logo {
-    color: white;
-    font-size: 1.3rem;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-}
+.logo { color: white; font-size: 1.3rem; font-weight: 700; }
 
-/* ---- CONTAINER ---- */
 .container {
     max-width: 900px;
     margin: 48px auto;
@@ -45,15 +38,8 @@ body {
     gap: 48px;
 }
 
-/* ---- TÍTULOS DE SEÇÃO ---- */
-.section-title {
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: var(--text);
-    margin-bottom: 20px;
-}
+.section-title { font-size: 1.4rem; font-weight: 700; margin-bottom: 20px; }
 
-/* ---- FORMULÁRIO ---- */
 .card-form {
     background: var(--white);
     border-radius: var(--radius);
@@ -73,16 +59,10 @@ body {
     font-family: 'Inter', sans-serif;
     color: var(--text);
     outline: none;
-    transition: border-color 0.2s;
 }
 
-.card-form input:focus {
-    border-color: var(--purple);
-}
-
-.card-form input::placeholder {
-    color: var(--muted);
-}
+.card-form input:focus { border-color: var(--purple); }
+.card-form input::placeholder { color: var(--muted); }
 
 .card-form button {
     background: var(--purple);
@@ -94,37 +74,17 @@ body {
     font-weight: 600;
     font-family: 'Inter', sans-serif;
     cursor: pointer;
-    transition: background 0.2s, transform 0.1s;
 }
 
-.card-form button:hover {
-    background: var(--purple-dark);
-}
+.card-form button:hover { background: var(--purple-dark); }
+.msg { font-size: 0.9rem; min-height: 20px; font-weight: 500; }
 
-.card-form button:active {
-    transform: scale(0.98);
-}
-
-.msg {
-    font-size: 0.9rem;
-    min-height: 20px;
-    font-weight: 500;
-}
-
-/* ---- GRID DE CARDS ---- */
 .cards-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
 }
 
-.empty-msg {
-    color: var(--muted);
-    font-size: 0.95rem;
-    margin-top: 8px;
-}
-
-/* ---- CARD ITEM ---- */
 .card-item {
     background: var(--purple);
     border-radius: var(--radius);
@@ -134,38 +94,91 @@ body {
     flex-direction: column;
     gap: 8px;
     box-shadow: var(--shadow);
-    cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
     min-height: 120px;
-    position: relative;
 }
 
-.card-item:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 32px rgba(124, 58, 237, 0.22);
+.card-frente { font-size: 1rem; font-weight: 600; }
+.card-verso { font-size: 0.88rem; opacity: 0.82; }
+.empty-msg { color: var(--muted); font-size: 0.95rem; }
+
+
+.estudo-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
 }
 
-.card-frente {
+.btn-voltar {
+    background: none;
+    border: none;
+    color: var(--purple);
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-family: 'Inter', sans-serif;
+}
+
+#progresso-texto { font-weight: 600; color: var(--muted); }
+
+.card-item-grande {
+    background: var(--purple);
+    border-radius: var(--radius);
+    padding: 60px 32px;
+    color: white;
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 600;
+    min-height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow);
+}
+
+.btn-principal {
+    width: 100%;
+    background: var(--purple);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 16px;
     font-size: 1rem;
     font-weight: 600;
-    letter-spacing: 0.2px;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    margin-top: 20px;
 }
 
-.card-verso {
-    font-size: 0.88rem;
-    font-weight: 400;
-    opacity: 0.82;
+.btn-principal:hover { background: var(--purple-dark); }
+
+.controles-grade {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-top: 20px;
 }
 
-/* ---- RESPONSIVO ---- */
+.btn-rating {
+    border: none;
+    border-radius: 12px;
+    padding: 16px 5px;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+}
+
+.again { background: #EF4444; }
+.hard  { background: #F59E0B; }
+.good  { background: #3B82F6; }
+.easy  { background: #10B981; }
+
 @media (max-width: 640px) {
-    .cards-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
+    .cards-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
-@media (max-width: 420px) {
-    .cards-grid {
-        grid-template-columns: 1fr;
-    }
+#tela-gestao, #tela-estudo {
+    transition: opacity 0.3s ease-in-out;
 }
