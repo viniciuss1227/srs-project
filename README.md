@@ -29,6 +29,47 @@ O sistema utiliza uma implementação customizada baseada em intervalos de confi
 
 4. **Easy**: Aplica um multiplicador agressivo (3.5x) para cards já dominados.
 
+##  Como Rodar Localmente
+
+### Pré-requisitos
+- Python 3.10+
+- pip
+
+### 1. Clone o repositório
+```bash
+git clone https://github.com/viniciuss1227/srs-project.git
+cd srs-project
+```
+
+### 2. Crie e ative o ambiente virtual
+```bash
+# Windows
+python -m venv venv
+venv\Scripts\activate
+
+# Mac/Linux
+python -m venv venv
+source venv/bin/activate
+```
+
+### 3. Instale as dependências
+```bash
+cd backend
+pip install -r requirements.txt
+```
+
+### 4. Inicie o servidor
+```bash
+uvicorn main:app --reload
+```
+> A API estará disponível em `http://127.0.0.1:8000`  
+> A documentação automática estará em `http://127.0.0.1:8000/docs`
+
+### 5. Abra o frontend
+Abra o arquivo `frontend/index.html` diretamente no navegador.
+
+>  O backend precisa estar rodando para o frontend funcionar.
+
 ##  Estrutura do Projeto
 ```text
 ├── backend/
